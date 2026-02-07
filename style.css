@@ -1,17 +1,23 @@
+/* VARIABLES GLOBALES */
 :root {
-    /* Cambiamos el morado por un rojo vibrante y el amarillo */
-    --primary: #d63031;
+    --primary: #d63031; 
     --secondary: #fab1a0;
-    --accent: #fbc531;
-    /* Degradado de Rojo a Amarillo/Naranja */
-    --bg-gradient: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+    --accent: #fbc531; 
+    
+  
+    --bg-gradient: linear-gradient(135deg, #d31027 0%, #ea384d 100%);
+    
+   
+    --btn-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    
     --glass-bg: rgba(255, 255, 255, 0.95);
     --text-dark: #2d3436;
     --text-light: #636e72;
     --success: #00b894;
-    --danger: #d63031;
+    --danger: #ff4757;
 }
 
+/* ESTILOS BASE */
 body {
     font-family: 'Outfit', sans-serif;
     background: var(--bg-gradient);
@@ -41,7 +47,7 @@ header {
 header h1 { margin: 0; font-size: 2.5rem; letter-spacing: -1px; }
 header p { margin: 5px 0 0; opacity: 0.9; font-weight: 300; }
 
-/* Efecto Cristal */
+/* CONTENEDOR TIPO CRISTAL */
 .glass-card {
     background: var(--glass-bg);
     border-radius: 24px;
@@ -51,7 +57,7 @@ header p { margin: 5px 0 0; opacity: 0.9; font-weight: 300; }
     transition: transform 0.3s ease;
 }
 
-/* Inputs y Botones */
+/* INPUTS Y BOTÓN AÑADIR */
 .input-wrapper {
     display: flex;
     gap: 10px;
@@ -84,9 +90,13 @@ button {
     color: white;
     padding: 0 25px;
 }
-/* Efecto hover en un tono naranja más oscuro para el rojo */
-.btn-primary:hover { background: #c0392b; transform: translateY(-2px); }
 
+.btn-primary:hover { 
+    background: #b32626; 
+    transform: translateY(-2px); 
+}
+
+/* LISTA DE CANCIONES */
 .list-header {
     display: flex;
     justify-content: space-between;
@@ -100,9 +110,12 @@ button {
     padding: 8px;
     border-radius: 50%;
 }
-.btn-icon:hover { background: #dfe6e9; transform: rotate(180deg); }
 
-/* Items de la lista */
+.btn-icon:hover { 
+    background: #dfe6e9; 
+    transform: rotate(180deg); 
+}
+
 .song-item {
     display: flex;
     align-items: center;
@@ -123,22 +136,46 @@ button {
     color: #b2bec3;
     width: 30px;
 }
-/* El top 1 ahora brilla con el amarillo accent */
+
 .rank.top-1 { color: var(--accent); } 
 .rank.top-2 { color: #b2bec3; } 
 .rank.top-3 { color: #e17055; } 
 
 .song-info { flex: 1; font-weight: 600; padding: 0 10px; }
 
+/* CONTROLES DE VOTO */
 .vote-controls { display: flex; align-items: center; gap: 10px; }
 .vote-number { font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
 
-/* El botón de votar ahora usa el nuevo degradado fuego */
-.btn-vote { background: var(--bg-gradient); color: white; padding: 8px 15px; font-size: 0.9rem; }
-.btn-unvote { background: var(--danger); color: white; padding: 8px 15px; }
-button:disabled { background: #dfe6e9; color: #b2bec3; cursor: not-allowed; transform: none; }
+/* Botón de votar con degradado especial */
+.btn-vote { 
+    background: var(--btn-gradient); 
+    color: white; 
+    padding: 8px 18px; 
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(255, 75, 43, 0.2);
+}
 
-/* Notificaciones */
+.btn-vote:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 75, 43, 0.4);
+    filter: brightness(1.1);
+}
+
+.btn-unvote { 
+    background: var(--danger); 
+    color: white; 
+    padding: 8px 15px; 
+}
+
+button:disabled { 
+    background: #dfe6e9; 
+    color: #b2bec3; 
+    cursor: not-allowed; 
+    transform: none; 
+}
+
+/* NOTIFICACIONES (TOASTS) */
 #toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; }
 .toast {
     background: #2d3436; color: white; padding: 12px 20px;
@@ -149,4 +186,8 @@ button:disabled { background: #dfe6e9; color: #b2bec3; cursor: not-allowed; tran
 }
 .toast.success { border-left: 4px solid var(--success); }
 .toast.error { border-left: 4px solid var(--danger); }
-@keyframes slideIn { from { transform: translateX(120%); } to { transform: translateX(0); } }
+
+@keyframes slideIn { 
+    from { transform: translateX(120%); } 
+    to { transform: translateX(0); } 
+}
