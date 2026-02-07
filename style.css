@@ -4,11 +4,10 @@
     --secondary: #fab1a0;
     --accent: #fbc531; 
     
-  
+    /* Degradados solicitados */
     --bg-gradient: linear-gradient(135deg, #d31027 0%, #ea384d 100%);
-    
-   
-    --btn-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    --btn-votar: linear-gradient(135deg, #00b894 0%, #55efc4 100%);
+    --btn-enviar: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
     
     --glass-bg: rgba(255, 255, 255, 0.95);
     --text-dark: #2d3436;
@@ -57,7 +56,7 @@ header p { margin: 5px 0 0; opacity: 0.9; font-weight: 300; }
     transition: transform 0.3s ease;
 }
 
-/* INPUTS Y BOTÓN AÑADIR */
+/* INPUTS Y BOTÓN ENVIAR (CELESTE) */
 .input-wrapper {
     display: flex;
     gap: 10px;
@@ -86,14 +85,16 @@ button {
 }
 
 .btn-primary {
-    background: var(--primary);
+    background: var(--btn-enviar);
     color: white;
     padding: 0 25px;
+    box-shadow: 0 4px 10px rgba(9, 132, 227, 0.3);
 }
 
 .btn-primary:hover { 
-    background: #b32626; 
     transform: translateY(-2px); 
+    box-shadow: 0 6px 15px rgba(9, 132, 227, 0.4);
+    filter: brightness(1.1);
 }
 
 /* LISTA DE CANCIONES */
@@ -147,35 +148,44 @@ button {
 .vote-controls { display: flex; align-items: center; gap: 10px; }
 .vote-number { font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
 
-/* Botón de votar con degradado especial */
+/* Botón VOTAR (VERDE DEGRADADO) */
 .btn-vote { 
-    background: var(--btn-gradient); 
+    background: var(--btn-votar); 
     color: white; 
     padding: 8px 18px; 
     font-size: 0.9rem;
-    box-shadow: 0 4px 10px rgba(255, 75, 43, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 184, 148, 0.2);
 }
 
 .btn-vote:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(255, 75, 43, 0.4);
+    box-shadow: 0 6px 15px rgba(0, 184, 148, 0.4);
     filter: brightness(1.1);
 }
 
+/* Botón QUITAR (ROJO) */
 .btn-unvote { 
     background: var(--danger); 
     color: white; 
     padding: 8px 15px; 
+    box-shadow: 0 4px 10px rgba(255, 71, 87, 0.2);
+}
+
+.btn-unvote:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 71, 87, 0.4);
+    background: #ff2e44;
 }
 
 button:disabled { 
-    background: #dfe6e9; 
-    color: #b2bec3; 
+    background: #dfe6e9 !important; 
+    color: #b2bec3 !important; 
     cursor: not-allowed; 
-    transform: none; 
+    transform: none !important; 
+    box-shadow: none !important;
 }
 
-/* NOTIFICACIONES (TOASTS) */
+/* NOTIFICACIONES */
 #toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; }
 .toast {
     background: #2d3436; color: white; padding: 12px 20px;
