@@ -9,6 +9,9 @@ if (!usuarioID) {
     localStorage.setItem('user_id', usuarioID);
 }
 
+// Configuración de límites
+const LIMITE_VOTOS = 5; // <--- Cambiado de 3 a 5
+
 function notificar(msg, tipo = 'success') {
     const container = document.getElementById('toast-container');
     const toast = document.createElement('div');
@@ -49,7 +52,7 @@ async function cargarCanciones() {
 
     canciones.forEach((song, index) => {
         const yaVoto = misVotosIds.includes(song.id);
-        const limite = misVotosIds.length >= 3;
+        const limiteAlcanzado = misVotosIds.length >= LIMITE_VOTOS; 
         const rankClass = index < 3 ? `top-${index + 1}` : '';
 
         const div = document.createElement('div');
@@ -61,7 +64,9 @@ async function cargarCanciones() {
                 <span class="vote-number">${song.votos_conteo || 0} pts</span>
                 ${yaVoto 
                     ? `<button class="btn-unvote" onclick="quitarVoto('${song.id}')">Quitar</button>` 
-                    : `<button class="btn-vote" onclick="votar('${song.id}')" ${limite ? 'disabled' : ''}>Votar</button>`
+                    : `<button class="btn-vote" onclick="votar('${song.id}')" ${limiteAlcanzado ? 'disabled' : ''}>
+                        ${limiteAlcanzado ? 'Límite' : 'Votar'}
+                       </button>`
                 }
             </div>
         `;
@@ -84,7 +89,9 @@ async function enviarCancion() {
 
 async function votar(id) {
     const { error } = await _supabase.from('votos').insert([{ cancion_id: id, usuario_huella: usuarioID }]);
-    if (error) return notificar("Ya gastaste tus 3 votos", "error");
+    
+    
+    if (error) return notificar(`Ya gastaste tus ${LIMITE_VOTOS} votos`, "error");
 
     const { data } = await _supabase.from('canciones').select('votos_conteo').eq('id', id).single();
     await _supabase.from('canciones').update({ votos_conteo: (data.votos_conteo || 0) + 1 }).eq('id', id);
