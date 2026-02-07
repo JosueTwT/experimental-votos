@@ -1,8 +1,8 @@
 :root {
-    --primary: #e75c5c;
-    --secondary: #fe9b9b;
-    --accent: #cea800;
-    --bg-gradient: linear-gradient(135deg, #ea6666 0%, #a24b4b 100%);
+    --primary: #d63031;
+    --secondary: #fab1a0;
+    --accent: #fbc531;
+    --bg-gradient: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
     --glass-bg: rgba(255, 255, 255, 0.95);
     --text-dark: #2d3436;
     --text-light: #636e72;
@@ -145,3 +145,4 @@ button:disabled { background: #dfe6e9; color: #b2bec3; cursor: not-allowed; tran
 .toast.success { border-left: 4px solid var(--success); }
 .toast.error { border-left: 4px solid var(--danger); }
 @keyframes slideIn { from { transform: translateX(120%); } to { transform: translateX(0); } }
+
