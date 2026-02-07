@@ -1,13 +1,15 @@
 :root {
+    /* Cambiamos el morado por un rojo vibrante y el amarillo */
     --primary: #d63031;
     --secondary: #fab1a0;
     --accent: #fbc531;
+    /* Degradado de Rojo a Amarillo/Naranja */
     --bg-gradient: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
     --glass-bg: rgba(255, 255, 255, 0.95);
     --text-dark: #2d3436;
     --text-light: #636e72;
     --success: #00b894;
-    --danger: #ff7675;
+    --danger: #d63031;
 }
 
 body {
@@ -82,7 +84,8 @@ button {
     color: white;
     padding: 0 25px;
 }
-.btn-primary:hover { background: #5649c0; transform: translateY(-2px); }
+/* Efecto hover en un tono naranja más oscuro para el rojo */
+.btn-primary:hover { background: #c0392b; transform: translateY(-2px); }
 
 .list-header {
     display: flex;
@@ -120,15 +123,17 @@ button {
     color: #b2bec3;
     width: 30px;
 }
-.rank.top-1 { color: #fdcb6e; } /* Oro */
-.rank.top-2 { color: #b2bec3; } /* Plata */
-.rank.top-3 { color: #e17055; } /* Bronce */
+/* El top 1 ahora brilla con el amarillo accent */
+.rank.top-1 { color: var(--accent); } 
+.rank.top-2 { color: #b2bec3; } 
+.rank.top-3 { color: #e17055; } 
 
 .song-info { flex: 1; font-weight: 600; padding: 0 10px; }
 
 .vote-controls { display: flex; align-items: center; gap: 10px; }
 .vote-number { font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
 
+/* El botón de votar ahora usa el nuevo degradado fuego */
 .btn-vote { background: var(--bg-gradient); color: white; padding: 8px 15px; font-size: 0.9rem; }
 .btn-unvote { background: var(--danger); color: white; padding: 8px 15px; }
 button:disabled { background: #dfe6e9; color: #b2bec3; cursor: not-allowed; transform: none; }
@@ -145,4 +150,3 @@ button:disabled { background: #dfe6e9; color: #b2bec3; cursor: not-allowed; tran
 .toast.success { border-left: 4px solid var(--success); }
 .toast.error { border-left: 4px solid var(--danger); }
 @keyframes slideIn { from { transform: translateX(120%); } to { transform: translateX(0); } }
-
