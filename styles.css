@@ -1,0 +1,147 @@
+:root {
+    --primary: #6c5ce7;
+    --secondary: #a29bfe;
+    --accent: #00cec9;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --text-dark: #2d3436;
+    --text-light: #636e72;
+    --success: #00b894;
+    --danger: #ff7675;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-gradient);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-dark);
+}
+
+.main-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+header {
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+header h1 { margin: 0; font-size: 2.5rem; letter-spacing: -1px; }
+header p { margin: 5px 0 0; opacity: 0.9; font-weight: 300; }
+
+/* Efecto Cristal */
+.glass-card {
+    background: var(--glass-bg);
+    border-radius: 24px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+/* Inputs y Botones */
+.input-wrapper {
+    display: flex;
+    gap: 10px;
+    background: #f1f2f6;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 15px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 0 25px;
+}
+.btn-primary:hover { background: #5649c0; transform: translateY(-2px); }
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-icon {
+    background: transparent;
+    font-size: 1.2rem;
+    padding: 8px;
+    border-radius: 50%;
+}
+.btn-icon:hover { background: #dfe6e9; transform: rotate(180deg); }
+
+/* Items de la lista */
+.song-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 12px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+    border: 1px solid #f1f2f6;
+}
+
+.song-item:hover { transform: scale(1.02); }
+
+.rank {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #b2bec3;
+    width: 30px;
+}
+.rank.top-1 { color: #fdcb6e; } /* Oro */
+.rank.top-2 { color: #b2bec3; } /* Plata */
+.rank.top-3 { color: #e17055; } /* Bronce */
+
+.song-info { flex: 1; font-weight: 600; padding: 0 10px; }
+
+.vote-controls { display: flex; align-items: center; gap: 10px; }
+.vote-number { font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
+
+.btn-vote { background: var(--bg-gradient); color: white; padding: 8px 15px; font-size: 0.9rem; }
+.btn-unvote { background: var(--danger); color: white; padding: 8px 15px; }
+button:disabled { background: #dfe6e9; color: #b2bec3; cursor: not-allowed; transform: none; }
+
+/* Notificaciones */
+#toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; }
+.toast {
+    background: #2d3436; color: white; padding: 12px 20px;
+    border-radius: 10px; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+    animation: slideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.toast.success { border-left: 4px solid var(--success); }
+.toast.error { border-left: 4px solid var(--danger); }
+@keyframes slideIn { from { transform: translateX(120%); } to { transform: translateX(0); } }
