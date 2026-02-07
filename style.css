@@ -106,15 +106,24 @@ button {
 }
 
 .btn-icon {
-    background: transparent;
-    font-size: 1.2rem;
-    padding: 8px;
-    border-radius: 50%;
+    background: var(--btn-enviar); 
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 12px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(9, 132, 227, 0.2);
+    width: 40px;
+    height: 40px;
 }
 
 .btn-icon:hover { 
-    background: #dfe6e9; 
-    transform: rotate(180deg); 
+    background: var(--btn-enviar);
+    filter: brightness(1.1);
+    transform: rotate(180deg) scale(1.1); 
+    box-shadow: 0 6px 15px rgba(9, 132, 227, 0.4);
 }
 
 .song-item {
@@ -201,3 +210,4 @@ button:disabled {
     from { transform: translateX(120%); } 
     to { transform: translateX(0); } 
 }
+
