@@ -2,14 +2,13 @@ const SB_URL = "https://ybbaysmlawnwamcbaent.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InliYmF5c21sYXdud2FtY2JhZW50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA0ODM0NDMsImV4cCI6MjA4NjA1OTQ0M30.bgnkSZZB3_mMP_kA5Ut5uWuFlSLydWHCkJG0bl-sywg";
 const _supabase = supabase.createClient(SB_URL, SB_KEY);
 
-// Usuario Único
 let usuarioID = localStorage.getItem('user_id');
 if (!usuarioID) {
     usuarioID = 'user_' + Math.random().toString(36).substr(2, 9);
     localStorage.setItem('user_id', usuarioID);
 }
 
-// Configuración de límites
+
 const LIMITE_VOTOS = 5; // <--- Cambiado de 3 a 5
 
 function notificar(msg, tipo = 'success') {
@@ -107,5 +106,6 @@ async function quitarVoto(id) {
     cargarCanciones();
 }
 
-// Iniciar
+
 cargarCanciones();
+
